@@ -104,3 +104,70 @@ Lista* lst_insere_ordenado(Lista *l, int info) {
     return l;
   }
 }
+
+/* Funcao recursiva: imprimie os elementos da lista */
+void lst_imprime_rec(Lista* l) {
+  if(lst_vazia(l)) {
+    return;
+  } else {
+    printf("info: %d\n", l->info);
+    lst_imprime_rec(l->prox);
+  }
+}
+
+/* Funcao recursiva: imprime a lista na ordem inversa */
+void lst_imprime_invertida_rec(Lista *l) {
+  if(lst_vazia(l)){
+    return;
+}else {
+    lst_imprime_invertida_rec(l->prox);
+    printf("info: %d\n", l->info);
+    }
+}
+
+/* Funcao recursiva: remove os elementos da lista */
+Lista* lst_remove_rec(Lista* l, int info) {
+  if(!lst_vazia(l)) {
+    if(l->info == info) {
+      Lista* lAux = l;
+      l = l->prox;
+      free(lAux);
+    } else {
+      l->prox = lst_remove_rec(l->prox, info);
+    }
+  }
+  return l;
+}
+
+/* Funcao recursiva: libera memoria ocupada pela lista */
+void lst_libera_rec(Lista* l) {
+  if(!lst_vazia(l)) {
+    lst_libera_rec(l->prox);
+    free(l);
+  }
+}
+
+/* Funcao recursiva: que verifica se duas listas sao iguais */
+int lst_igual_rec(Lista* l1, Lista* l2) {
+  if(lst_vazia(l1) && lst_vazia(l2)) {
+    return 1;
+  } else if(lst_vazia(l1) || lst_vazia(l2)) {
+    return 0;
+  } else {
+    return (l1->info == l2->info && lst_igual_rec(l1->prox, l2->prox));
+  }
+}
+
+/* Retorna o numero de nodes de uma lista */
+int comprimento(Lista* l) {
+  if (l == NULL) {
+    return 0;
+  } else {
+    int tam = 1;
+    while (l->prox != NULL) {
+      tam++;
+      l = l->prox;
+    }
+    return tam;
+  }
+}
