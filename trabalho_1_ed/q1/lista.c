@@ -47,6 +47,30 @@ void lst_imprime(Lista *l) {
   }
 }
 
+/* Remove um elemento de uma lista retornando a lista alterada */
+Lista* lst_remove(Lista *l, int info) {
+  if(l != NULL) {
+    Lista* lAux = l->prox;
+    if(l->info==info) {
+      free(l);
+      return lAux;
+    } else {
+      Lista* lAnt = l;
+      while(lAux != NULL) {
+        if(lAux->info == info) {
+          lAnt->prox = lAux->prox;
+          free(lAux);
+          break;
+        } else {
+          lAnt = lAux;
+          lAux = lAux->prox;
+        }
+      }
+    }
+  }
+  return l;
+}
+
 /* Libera o espaco alocado por uma lista */
 void lst_libera(Lista *l) {
   Lista* lProx;
