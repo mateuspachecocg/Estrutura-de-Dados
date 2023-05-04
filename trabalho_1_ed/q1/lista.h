@@ -1,7 +1,6 @@
 
 typedef struct lista Lista;
 
-
 /* Cria uma lista vazia */
 Lista* lst_cria();
 /* Testa se uma lista e vazia */
@@ -41,5 +40,5 @@ int primos(Lista* l);
 /* e - Funcao para criar uma lista que eh a concatenacao de uma lista l2 no final de uma lista l1 */
 Lista* lst_conc(Lista* l1, Lista* l2);
 /* f - Funcao que faz diferenca de duas listas L1 e L2 */
-Lista* lst_diferencia(Lista* l1, Lista* l2);
+Lista* lst_diferenca(Lista* l1, Lista* l2);
 

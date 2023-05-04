@@ -253,3 +253,16 @@ Lista* lst_conc(Lista* l1, Lista* l2) {
         return lNew;
         }
 }
+
+Lista* lst_diferenca(Lista* l1, Lista* l2) {
+  
+  Lista* lAux = l2;
+  while(!lst_vazia(lAux)) {
+    l1 = lst_remove(l1, lAux->info);
+    lAux = lAux->prox;
+  }
+
+  return l1;
+
+
+}
