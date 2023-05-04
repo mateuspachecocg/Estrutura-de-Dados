@@ -28,7 +28,18 @@ Lista* lst_remove_rec(Lista *l, int info);
 void lst_libera_rec(Lista* l);
 /* Funcao recursiva: que verifica se duas listas sao iguais */
 int lst_igual_rec(Lista* l1, Lista* l2);
-/* Retorna o numero de nodes da lista */
+/* Funcao que retorna uma lista na ordem inversa */
+Lista* lst_inverte(Lista* l);
+/* a - Retorna o numero de nodes da lista */
 int comprimento(Lista *l);
-
+/* b - Retorna o numero de nodes da lista que possuem o campo info com o valor menor que n */
+int menores(Lista* l, int n);
+/* c - Retorna a soma dos valores dos campos info de todos os nodes */
+int soma(Lista* l);
+/* d - Retorna o numero de nodes da lista que possuem o campo info com o numero primo */
+int primos(Lista* l);
+/* e - Funcao para criar uma lista que eh a concatenacao de uma lista l2 no final de uma lista l1 */
+Lista* lst_conc(Lista* l1, Lista* l2);
+/* f - Funcao que faz diferenca de duas listas L1 e L2 */
+Lista* lst_diferencia(Lista* l1, Lista* l2);
 

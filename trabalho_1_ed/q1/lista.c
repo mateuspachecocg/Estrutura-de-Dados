@@ -160,7 +160,7 @@ int lst_igual_rec(Lista* l1, Lista* l2) {
 
 /* Retorna o numero de nodes de uma lista */
 int comprimento(Lista* l) {
-  if (l == NULL) {
+  if (lst_vazia(l)) {
     return 0;
   } else {
     int tam = 1;
@@ -170,4 +170,86 @@ int comprimento(Lista* l) {
     }
     return tam;
   }
+}
+
+int menores(Lista* l, int n) {
+  int menCount = 0;
+  Lista* lAux = l;
+  while(!lst_vazia(lAux)) {
+    if(lAux->info < n) {
+      menCount++;
+    }
+    lAux = lAux->prox;
+  }
+  return menCount;
+}
+
+int soma(Lista* l) {
+  int soma = 0;
+  Lista* lAux = l;
+  while(!lst_vazia(lAux)) {
+    soma += lAux->info;
+    lAux = lAux->prox;
+  }
+  return soma;
+}
+
+int isPrime(int n) {
+  int divs = 0;
+  int i;
+  for(i = 2; i <= n/2; i++) {
+    if(n % i == 0) {
+      divs++;
+      break;
+    }
+  }
+
+  return divs == 0;
+}
+
+int primos(Lista* l) {
+  int primos = 0;
+  Lista* lAux = l;
+  while(!lst_vazia(lAux)) {
+    if(isPrime(lAux->info))
+      primos++;
+    lAux = lAux->prox;
+  }
+  return primos;
+}
+
+Lista* lst_inverte(Lista* l) {
+  Lista* lNew = lst_cria();
+  Lista* lAux = l;
+  while(lAux != NULL) {
+    lNew = lst_insere(lNew, lAux->info);
+    lAux = lAux->prox;
+  }
+  return lNew;
+}
+
+Lista* lst_conc(Lista* l1, Lista* l2) {
+  Lista* lNew = lst_cria();
+  lst_insere(lNew, 10);
+  if(lst_vazia(l1) && lst_vazia(l2)) {
+    return lNew;}
+  else if(lst_vazia(l1) && !lst_vazia(l2)) {
+    return l2;}
+  else if(!lst_vazia(l1) && lst_vazia(l2)) {
+    return l1;}
+  else {
+        int i = 0;
+        Lista* lAux = lst_inverte(l2);
+        for(; i < comprimento(l2); i++) {
+          lNew = lst_insere(lNew, lAux->info);
+          lAux = lAux->prox;
+        }
+        i = 0;
+        lAux = lst_inverte(l1);
+        for(; i < comprimento(l1); i++) {
+          lNew = lst_insere(lNew, lAux->info);
+          lAux = lAux->prox;
+        }
+        return lNew;
+        }
 }
