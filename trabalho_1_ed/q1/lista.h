@@ -41,4 +41,6 @@ int primos(Lista* l);
 Lista* lst_conc(Lista* l1, Lista* l2);
 /* f - Funcao que faz diferenca de duas listas L1 e L2 */
 Lista* lst_diferenca(Lista* l1, Lista* l2);
+/* Insere um elemento no fim da lista */
+Lista* lst_insere_fim_lista(Lista* l, int info);
 

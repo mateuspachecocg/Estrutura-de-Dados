@@ -10,7 +10,8 @@ void programa();
 int main(void) {
  
   
-  programa();
+  //programa();
+  test_development();
 
   return 0;
 }
@@ -25,6 +26,7 @@ void test_development() {
   l = lst_insere(l, 30);
   l = lst_insere(l, 41);
   l = lst_insere(l, 53);
+  l = lst_insere_fim_lista(l, 69);
   l = lst_remove(l, 10);
   lst_imprime(l);
   printf("O tamanho da lista: %d\n", comprimento(l));

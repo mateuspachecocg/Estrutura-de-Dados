@@ -263,6 +263,21 @@ Lista* lst_diferenca(Lista* l1, Lista* l2) {
   }
 
   return l1;
-
-
 }
+
+Lista* lst_insere_fim_lista(Lista* l, int info)
+{
+  Lista* lNew = (Lista*) malloc(sizeof(Lista));
+  lNew->info = info;
+  lNew->prox = NULL;
+  if(l==NULL) {
+    return lNew;
+  } else {
+    Lista* lAux = l->prox;
+    while(lAux->prox != NULL)
+      lAux = lAux->prox;
+    lAux->prox = lNew;
+  }
+  return l;
+}
+
