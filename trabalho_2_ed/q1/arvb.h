@@ -20,6 +20,8 @@ int arvb_altura(ArvB* a);
 /* Funcao que retorna a quantidade de folhas que possuem no campo
 * info um numero pirmo */
 int folhas_primos(ArvB* a);
+/* Funcao que retorna a quantidade de nos que possuem dois filhos. */
+int dois_filhos(ArvB* a);
 /* Funcao que retorna a quantidade nos cujas as subarvores esuqerda e diretia nao
 * sao vazias e tem igual altura. */
 int nos_igual_altura(ArvB* a);

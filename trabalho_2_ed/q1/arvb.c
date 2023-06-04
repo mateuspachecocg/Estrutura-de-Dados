@@ -35,7 +35,7 @@ void arvb_imprime(ArvB *a)
 {
   if(!arvb_vazia(a)){
     arvb_imprime(a->esq);
-    printf("%d", a->info);
+    printf(" %d ", a->info);
     arvb_imprime(a->dir);
   }
 }
@@ -95,3 +95,83 @@ int arvb_altura(ArvB *a)
         return 1+hSAD;
     }
 }
+
+void arvb_libera(ArvB* a)
+{
+  if(!arvb_vazia(a)){
+    arvb_libera(a->esq);
+    arvb_libera(a->dir);
+    free(a);
+  }
+}
+
+// Funcao para verifcar se um numero eh primo
+int is_primo(int c) {
+  int i;
+  for(i=1; i < c/2; i++)
+    if(c%i == 0) return 0;
+
+  return 1;
+} 
+
+int folhas_primos(ArvB *a)
+{
+  if(arvb_vazia(a))
+    return 0;
+  else {
+      int pSAE = folhas_primos(a->esq);
+      int pSAD = folhas_primos(a->dir);
+
+      if(is_primo(a->info))
+        return pSAE+pSAD+1;
+      else
+        return pSAE+pSAD;
+    }
+}
+
+int dois_filhos(ArvB* a)
+{
+  if(arvb_vazia(a))
+    return 0;
+  else {
+      int m2SAE = dois_filhos(a->esq);
+      int m2SAD = dois_filhos(a->dir);
+      
+      if(!arvb_vazia(a->esq) && !arvb_vazia(a->dir))
+        return 1+m2SAE+m2SAD;
+      else 
+        return m2SAE+m2SAD;
+    }
+}
+
+int nos_igual_altura(ArvB* a)
+{
+  if(arvb_vazia(a))
+    return 0;
+  else {
+      int cSAE = nos_igual_altura(a->esq);
+      int cSAD = nos_igual_altura(a->dir);
+
+      if(!arvb_vazia(a->esq) && !arvb_vazia(a->dir))
+        return 1+cSAE+cSAD;
+      else
+        return cSAE+cSAD;
+
+    }
+}
+
+int iguais(ArvB* a, ArvB* b)
+{
+  if(arvb_vazia(a) && arvb_vazia(b))
+    return 1;
+  else if(arvb_altura(a) != arvb_altura(b))
+    return 0;
+  else {
+    if(a->info!=b->info)
+       return 0;
+    else 
+      return iguais(a->esq, b->esq) && iguais(a->dir, b->dir);
+  }
+}
+
+
