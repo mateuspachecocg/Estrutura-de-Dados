@@ -107,12 +107,15 @@ void arvb_libera(ArvB* a)
 
 // Funcao para verifcar se um numero eh primo
 int is_primo(int c) {
-  int i;
-  for(i=1; i < c/2; i++)
+  if(c < 2)
+    return 0;
+  else {
+    int i;
+    for(i=1; i < c/2; i++)
     if(c%i == 0) return 0;
-
-  return 1;
-} 
+      return 1;
+  }
+ } 
 
 int folhas_primos(ArvB *a)
 {
@@ -122,9 +125,9 @@ int folhas_primos(ArvB *a)
       int pSAE = folhas_primos(a->esq);
       int pSAD = folhas_primos(a->dir);
 
-      if(is_primo(a->info))
+      if(is_primo(a->info) && a->esq==NULL && a->dir==NULL) {
         return pSAE+pSAD+1;
-      else
+      }else
         return pSAE+pSAD;
     }
 }
