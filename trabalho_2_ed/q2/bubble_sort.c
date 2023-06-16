@@ -41,6 +41,6 @@ void array_print(int* array, int n)
   for (i=0; i<n-1; i++)
     printf("%d, ", array[i]);
 
-  printf("%d}\n", array[n-1]);
+  printf("%d }\n", array[n-1]);
 
 }
